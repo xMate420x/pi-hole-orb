@@ -12,7 +12,10 @@ jobs:
           name: "Clone Pi-Hole main repository"
           working_directory: ~/pi-hole
       - checkout
-      - python/dist ~/pi-hole
+      - python/install-deps:
+          app-dir: ~/pi-hole
+      - python/dist:
+          app-dir: ~/pi-hole
 
 workflows:
   main:
