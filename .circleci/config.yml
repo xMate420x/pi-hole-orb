@@ -11,6 +11,9 @@ jobs:
           command: git clone --recursive https://github.com/pi-hole/pi-hole.git ~
           name: "Clone Pi-Hole main repository"
           working_directory: ~
+      - run:
+          command: pip install -r requirements.txt
+          name: "Install requirements"
       - checkout
       - python/install-deps
       - python/dist:
