@@ -1,6 +1,7 @@
 version: 2.1
 
 orbs:
+  orb-tools: circleci/orb-tools@10.0
   python: circleci/python@1.2.1
 
 jobs:
