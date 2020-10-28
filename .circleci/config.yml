@@ -11,13 +11,26 @@ jobs:
           command: git clone --recursive https://github.com/pi-hole/pi-hole.git ~/project
           name: "Clone Pi-Hole main repository"
           working_directory: ~/project
+      - checkout:
+          path: ~/project/.orb
       - python/install-packages:
           pip-dependency-file: requirements.txt
           pkg-manager: pip
       - python/dist
 
 workflows:
-  main:
-    jobs:
-      - build
-
+    build:
+        jobs:
+            - build
+            - orb-tools/lint
+            - orb-tools/pack
+            - hold-for-publish:
+                  type: approval
+                  requires:
+                      - orb-tools/lint
+                      - orb-tools/pack
+            - orb-tools/publish:
+                  attach-workspace: true
+                  orb-ref: xMate420x/pi-hole@1.0.0
+                  context: pub
+                  requires: [hold-for-publish]
