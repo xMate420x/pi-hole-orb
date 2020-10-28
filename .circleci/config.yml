@@ -8,15 +8,15 @@ jobs:
     executor: python/default
     steps:
       - run:
-          command: git clone --recursive https://github.com/pi-hole/pi-hole.git /root/project
+          command: git clone --recursive https://github.com/pi-hole/pi-hole.git ~/project
           name: "Clone Pi-Hole main repository"
-          working_directory: /root/project
+          working_directory: ~/project
       - run:
           command: pip install -r requirements.txt
           name: "Install requirements"
       - checkout
       - python/dist:
-          app-dir: /root/project
+          app-dir: ~/project
 
 workflows:
   main:
