@@ -1,0 +1,26 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@0.2.1
+
+jobs:
+  build:
+    executor: python/default
+    steps:
+      - run:
+          command: git clone --recursive https://github.com/pi-hole/pi-hole.git
+          name: "Clone Pi-Hole main repository"
+          working_directory: ~/pi-hole
+      - checkout
+      - python/load-cache
+      - python/install-deps
+      - python/save-cache
+      - run:
+          command: ./setup.py
+          name: Setup
+
+workflows:
+  main:
+    jobs:
+      - build
+
