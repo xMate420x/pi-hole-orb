@@ -1,0 +1,11 @@
+version: 2.1
+
+description: >
+  Pi-Hole orb-ized
+display:
+  home_url: "https://github.com/xMate420x/pi-hole-orb"
+  source_url: "https://github.com/xMate420x/pi-hole-orb"
+
+orbs:
+  orb-tools: circleci/orb-tools@10.0
+  python: circleci/python@1.2.1
