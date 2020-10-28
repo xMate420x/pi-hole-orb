@@ -7,12 +7,12 @@ jobs:
   build:
     executor: python/default
     steps:
-      - checkout
       - run:
           command: git clone --recursive https://github.com/pi-hole/pi-hole.git ~/pi-hole
           name: "Clone Pi-Hole main repository"
           working_directory: ~/pi-hole
-      - python/install-deps
+      - checkout
+      - python/install-deps ~/pi-hole
       - run:
           command: ./setup.py
           name: Setup
