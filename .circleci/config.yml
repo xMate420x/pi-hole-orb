@@ -32,6 +32,6 @@ workflows:
                       - orb-tools/pack
             - orb-tools/publish:
                   attach-workspace: true
-                  orb-ref: xMate420x/pi-hole@1.0.0
+                  orb-ref: xmate420x/pi-hole@1.0.0
                   context: pub
                   requires: [hold-for-publish]
